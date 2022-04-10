@@ -1,0 +1,5 @@
+Package: apache-ical
+Version: 0.1
+Architecture: amd64
+Maintainer: Sam Ruby <rubys@intertwingly.net>
+Description: Preconfigured Apache web server with ical modules
