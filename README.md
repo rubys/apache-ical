@@ -23,6 +23,7 @@ Local testing:
 ```
 docker compose up -d
 curl http://localhost:3000/
+curl -X PROPFIND http://localhost:3000/calendar/board
 docker compose exec web /bin/bash
 ```
 

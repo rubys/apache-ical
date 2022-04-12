@@ -26,7 +26,7 @@ RUN curl -sL https://downloads.apache.org/httpd/httpd-$APACHE.tar.gz \
   && mv /usr/local/src/httpd-$APACHE/srclib/apr-util-$APR_UTIL /usr/local/src/httpd-$APACHE/srclib/apr-util \
   && mkdir /usr/local/apache$APACHE \
   && cd /usr/local/src/httpd-$APACHE \
-  && ./configure --prefix=/usr/local/apache$APACHE --with-included-apr \
+  && ./configure --prefix=/usr/local/apache$APACHE --with-included-apr --with-ldap \
   && make \
   && make install
 
@@ -58,6 +58,14 @@ RUN mkdir -p /work/DEBIAN \
 COPY control /work/DEBIAN
 
 RUN dpkg-deb --build /work /root/apache-ical.deb
+
+COPY calendar.conf /usr/local/apache$APACHE/conf/extra
+
+RUN echo "Include conf/extra/calendar.conf" >> /usr/local/apache$APACHE/conf/httpd.conf \
+  && mkdir /usr/local/apache$APACHE/htdocs/calendar \
+  && chown daemon:daemon /usr/local/apache$APACHE/htdocs/calendar \
+  && mkdir /calendar \
+  && chown daemon:daemon /calendar
 
 CMD ["/usr/local/apache2.4.53/bin/apachectl", "-D", "FOREGROUND"]
 
