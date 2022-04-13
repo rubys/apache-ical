@@ -12,6 +12,7 @@ RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     curl \
+    gdb \
     libical-dev \
     libjson-c-dev \
   && DEBIAN_FRONTEND=noninteractive apt-get build-dep -y apache2
