@@ -1,1 +1,1 @@
-docker compose run -p 3000:80 web gdb --args /usr/local/apache2.4.53/bin/httpd -d /usr/local/apache2.4.53/ -f /usr/local/apache2.4.53/conf/httpd.conf -DSERVER_ENV_stable -DSERVER_DATACENTRE_local -DSERVER_CLASS_core -X
+docker compose run -p 3000:80 web gdb --args /opt/apache2.4.53/bin/httpd -d /opt/apache2.4.53/ -f /opt/apache2.4.53/conf/httpd.conf -DSERVER_ENV_stable -DSERVER_DATACENTRE_local -DSERVER_CLASS_core -X
