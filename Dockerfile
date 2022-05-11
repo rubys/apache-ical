@@ -12,7 +12,8 @@ RUN apt-get update \
 
 COPY calendar.conf /etc/apache2/conf-available
 
-RUN a2enconf calendar \
+RUN a2enmod ldap dav dav_fs authnz_ldap \
+  && a2enconf calendar \
   && mkdir /var/www/html/calendar \
   && chown www-data:www-data /var/www/html/calendar \
   && mkdir /calendar \
