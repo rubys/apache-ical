@@ -12,10 +12,11 @@ RUN apt-get update \
 
 COPY calendar.conf /etc/apache2/conf-available
 
-RUN a2enmod ldap dav dav_fs authnz_ldap \
+RUN a2enmod socache_shmcb ssl ldap dav dav_fs authnz_ldap \
   && a2enconf calendar \
   && mkdir /var/www/html/calendar \
   && chown www-data:www-data /var/www/html/calendar \
+  && mkdir /var/www/html/principals \
   && mkdir /calendar \
   && chown www-data:www-data /calendar
 
