@@ -15,18 +15,18 @@ Build Instructions:
 ```
 git clone https://github.com/rubys/apache-ical.git
 cd apache-ical
-./build.sh
+docker compose build
 ```
 
 Local testing:
 
 ```
 docker compose up -d
-curl http://localhost/calendar/
-curl -u [root-karma] -X MKCALENDAR http://localhost/calendar/members
-curl -u [root-karma] -X MKCALENDAR http://localhost/calendar/board
-curl -u [root-karma] -X MKCALENDAR http://localhost/calendar/apr
-curl -u [members-karma] -H "Depth: 0" -X PROPFIND http://localhost/calendar/members/
+curl http://localhost:3000/calendar/
+curl -u [members-karma] -X MKCALENDAR http://localhost:3000/calendar/members
+curl -u [members-karma] -X MKCALENDAR http://localhost:3000/calendar/board
+curl -u [members-karma] -X MKCALENDAR http://localhost:3000/calendar/apr
+curl -u [members-karma] -H "Depth: 0" -X PROPFIND http://localhost:3000/calendar/members/
 curl http://localhost/calendar/members/
 docker compose exec web /bin/bash
 ./gdb.sh
